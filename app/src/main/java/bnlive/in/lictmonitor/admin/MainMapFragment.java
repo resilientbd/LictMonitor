@@ -35,38 +35,36 @@ public class MainMapFragment extends MapFragment{
     public Marker placeMarker(Context context,MergeSheduleUniversity eventInfo,GoogleMap googleMap) {
         String ltln=eventInfo.getUniversity().getLat_long();
         String[] str=ltln.split(",");
-        MarkerOptions markerOptions=new MarkerOptions()
+        MarkerOptions markerOptions = new MarkerOptions();
+        if(str.length==0) {
+             markerOptions = new MarkerOptions()
 
-                .position(new LatLng(Double.parseDouble(str[0]),Double.parseDouble(str[1])))
+                    .position(new LatLng(Double.parseDouble(str[0]), Double.parseDouble(str[1])))
 
-                .title(eventInfo.getBatchCode())
-                .snippet(eventInfo.getStatus());
+                    .title(eventInfo.getBatchCode())
+                    .snippet(eventInfo.getStatus());
 
 
-        if(eventInfo.getStatus().equals("ongoing"))
-        {
+            if (eventInfo.getStatus().equals("ongoing")) {
 
-            markerOptions.icon(bitmapDescriptorFromVector(context,R.drawable.ic_005_location));
-        }
+                markerOptions.icon(bitmapDescriptorFromVector(context, R.drawable.ic_005_location));
+            }
 //        else
-         if (eventInfo.getStatus().equals("completed"))
-        {
-            markerOptions.icon(bitmapDescriptorFromVector(context,R.drawable.ic_001_flag_map_marker));
-        }
-        //else
-            if (eventInfo.getStatus().equals("completed successfully"))
-        {
-            markerOptions.icon(bitmapDescriptorFromVector(context,R.drawable.ic_004_placeholder));
-        }
-       // else
- if (eventInfo.getStatus().equals("missed"))
-        {
-            markerOptions.icon(bitmapDescriptorFromVector(context,R.drawable.ic_ss));
-        }
-      //  else
-            if (eventInfo.getStatus().equals("delay"))
-        {
-            markerOptions.icon(bitmapDescriptorFromVector(context,R.drawable.ic_002_map));
+            if (eventInfo.getStatus().equals("completed")) {
+                markerOptions.icon(bitmapDescriptorFromVector(context, R.drawable.ic_001_flag_map_marker));
+            }
+            //else
+            if (eventInfo.getStatus().equals("completed successfully")) {
+                markerOptions.icon(bitmapDescriptorFromVector(context, R.drawable.ic_004_placeholder));
+            }
+            // else
+            if (eventInfo.getStatus().equals("missed")) {
+                markerOptions.icon(bitmapDescriptorFromVector(context, R.drawable.ic_ss));
+            }
+            //  else
+            if (eventInfo.getStatus().equals("delay")) {
+                markerOptions.icon(bitmapDescriptorFromVector(context, R.drawable.ic_002_map));
+            }
         }
         Marker m  = googleMap.addMarker(markerOptions);
 m.showInfoWindow();

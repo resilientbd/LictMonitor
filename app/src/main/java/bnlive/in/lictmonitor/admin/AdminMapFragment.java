@@ -118,6 +118,9 @@ void mapFunc()
 MainMapFragment mapFragment;
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        try {
+
+
         mapFragment=new MainMapFragment();
         mMap = googleMap;
 
@@ -160,7 +163,11 @@ mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
         Log.d("mapcheck","Dataset Size: "+listMerge.size());
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//
+        }catch (Exception e)
+        {
+
+        }
     }
     public void realtimeupdate()
     {
